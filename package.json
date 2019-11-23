@@ -1,0 +1,41 @@
+{
+  "name": "booksearch",
+  "version": "1.0.0",
+  "description": "- - -  ## What BookSearch does BookSeach is a full-stack (MERN) web application that allows users to easily search through Google Books API, save these articles, and view more information about the returned books. In addition, data retrieved from the API include the book's title, authors, a description, and an image of the book's cover. Saved books are saved in a database and can be retrieved at a later time.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "install": "cd client && npm install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wesleyberry/BookSearch.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wesleyberry/BookSearch/issues"
+  },
+  "homepage": "https://github.com/wesleyberry/BookSearch",
+  "dependencies": {
+    "axios": "^0.18.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "if-env": "^1.0.4",
+    "mongoose": "^5.7.10",
+    "nodemon": "^1.19.4",
+    "react-router-dom": "^5.1.2",
+    "reactstrap": "^8.1.1"
+  },
+  "devDependencies": {
+    "concurrently": "^4.1.2",
+    "http-server": "^0.11.1"
+  }
+}
