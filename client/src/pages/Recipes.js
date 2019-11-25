@@ -14,9 +14,7 @@ const axios = require('axios');
 class Recipes extends Component {
     state = {
         recipes: [],
-        //expectedCaloriesList: [],
         title: "",
-        //ingredients: [],
         image: "",
         source: "",
         link: "",
@@ -28,8 +26,6 @@ class Recipes extends Component {
         carbsText: ""
     };
 
-    //expectedCalories = [];
-    
    
 
     toggleModal () {
@@ -38,15 +34,11 @@ class Recipes extends Component {
         });
     }
     componentDidMount() {
-        // this.loadBooks();
+       
     };
 
     checkState() {
-        // for (var i = 0; i < this.state.books.length; i++) {
-            // if(this.state.books.volumeInfo.imageLinks) {
-            // console.log(this.state.books[i].volumeInfo.imageLinks);
-            // }
-        // }
+        
     }
 
     handleRequest = recipe => {
@@ -56,7 +48,6 @@ class Recipes extends Component {
         this.state.carbsText = "";
         axios.get(`https://api.spoonacular.com/recipes/guessNutrition?apiKey=a0bece895fc54992b366eb36481e0618&title=${recipe.recipe.label}`)
         .then((response)=>{
-            //alert("Estimated Calories: " + response.data.calories.value)
             if (response.data.status === 'error')  {
                 console.log("No")
                 var text1 = "Estimated Calories: No data returned from API";
@@ -104,18 +95,10 @@ class Recipes extends Component {
     }
                         
     handleSave = recipe => {
-        // console.log(book.volumeInfo.title + 
-        //     book.volumeInfo.authors +
-        //     book.volumeInfo.description +
-        //     book.volumeInfo.infoLink);
             API.saveRecipe({
                 title:recipe.recipe.label,
-                //ingredients: recipe.ingredients,
-                //link: recipe.href,
                 link:recipe.recipe.url,
                 source: recipe.recipe.source,
-                //nutrientInfo:this.expectedCalories,
-                //actualCalories: recipe.recipe.calories,
                 image: recipe.recipe.image
             }).then(res => console.log("Returned from DB")).catch(err => console.log(err));
             alert('Recipe Saved!');
@@ -193,13 +176,8 @@ class Recipes extends Component {
                         {this.state.recipes.map((recipe, index) => {
                             return (<div className="col-sm-12 col-md-4 col-lg-4 col-xl-3"><Card key={recipe._id}
                             title={recipe.recipe.label}
-                            //ingredients={recipe.ingredients}
-                            //image={recipe.thumbnail}
                             link={recipe.recipe.url}
                             source={recipe.recipe.source}
-                            //expectedCalories={this.state.expectedCaloriesList[this.state.expectedCaloriesList[index]]}
-                            //actualCalories={recipe.recipe.calories}
-                            // image={book.volumeInfo.imageLinks.smallThumbnail}
                             image={recipe.recipe.image !== undefined ? 
                             recipe.recipe.image : "https://via.placeholder.com/100"}
                             />
