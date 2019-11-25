@@ -45,13 +45,10 @@ class Saved extends Component {
                             return (<div className="col-sm-12 col-md-4 col-lg-4 col-xl-3"><Card 
                             key={recipe._id}
                             title={recipe.title}
-                            //authors={recipe.authors}
-                            //ingredients={recipe.ingredients}
                             link={recipe.link}
                             actualCalories={recipe.actualCalories}
                             expectedCalories={recipe.expectedCalories}
                             source={recipe.source}
-                            //image={recipe.image_url}
                             image={recipe.image}
                             />
                             
