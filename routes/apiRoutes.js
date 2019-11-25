@@ -6,15 +6,12 @@ const db = require("../models");
 const id = 'c9c317f1';
 const key = 'bdaab22b64494040c8739fc7e2ae5d57';
 
-//var list = [];
 
 
 router.get("/recipes/:title", (req, res) => {
   var title = req.params.title.replace(/\s+/g, "+");
-  //console.log(`http://www.recipepuppy.com/api/?q=${title}`);
   console.log(`https://api.edamam.com/search?q=chicken&app_id=${id}&app_key=${key}&q=${title}`);
   axios
-    //.get(`http://www.recipepuppy.com/api/?q=${req.params.title}`)
     .get(`https://api.edamam.com/search?app_id=${id}&app_key=${key}&q=${req.params.title}`)
     .then(({ data }) => {
       console.log(data);
@@ -44,4 +41,4 @@ router.delete("/recipes/:id", (req, res) => {
 });
 
 module.exports = router;
-//module.exports = { list };
+
